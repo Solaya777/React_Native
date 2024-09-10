@@ -28,37 +28,43 @@ export default function Footer() {
 
 const styles = StyleSheet.create({
   footer: {
-    padding: 10,
-    backgroundColor: '#fff',
+    padding: 15,
+    backgroundColor: '#1c1c1c',  // Fondo oscuro
     borderTopWidth: 1,
-    borderTopColor: '#ccc',
+    borderTopColor: '#444',  // Borde gris oscuro
     alignItems: 'center',
   },
   logo: {
     width: 80,
     height: 30,
-    marginBottom: 8,
+    marginBottom: 12,
   },
   aboutText: {
     fontSize: 12,
     textAlign: 'center',
-    marginBottom: 8,
+    color: '#f0f0f0',  // Texto en color gris claro
+    marginBottom: 10,
+    fontStyle: 'italic',  // Añade estilo cursivo para darle un toque artístico
   },
   socialLinks: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginBottom: 8,
+    marginBottom: 12,
   },
   socialLink: {
-    color: '#007BFF',
+    color: '#d32f2f',  // Rojo oscuro, más acorde a una temática de metal
     fontSize: 14,
+    textTransform: 'uppercase',  // Texto en mayúsculas
+    fontWeight: 'bold',  // Negrita para mayor énfasis
   },
   copyRight: {
-    fontSize: 10,
+    fontSize: 11,
+    color: '#888',  // Gris más claro para diferenciar del resto
     textAlign: 'center',
   },
   boldText: {
     fontWeight: 'bold',
+    color: '#f0f0f0',  // Texto destacado en gris claro
   },
 });

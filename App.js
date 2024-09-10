@@ -3,15 +3,20 @@ import { registerRootComponent } from "expo";
 import { View, StyleSheet, StatusBar, ScrollView } from "react-native";
 import Header from "./components/Header";
 import LoginForm from "./components/LoginForm";
+import HeaderLoged from "./components/HeaderLoged";
 import Footer from "./components/Footer";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
+import Products from "./components/Products";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import appFirebase from './Credenciales';
 import { getAuth } from 'firebase/auth';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Text, Image, Linking, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['VirtualizedLists should never be nested inside plain ScrollViews']);
 
 
 const auth = getAuth(appFirebase);
@@ -31,12 +36,17 @@ export default function App() {
           <Stack.Screen
             name="Signup"
             component={Signup}
-            options={{ headerTitle: "Registro" }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="Home"
-            component={Home}
-            options={{ headerTitle: "Home" }}
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Products"
+            component={ProductsScreen}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>
@@ -47,27 +57,70 @@ export default function App() {
 function LoginScreen() {
   return (
     <KeyboardAvoidingView
-    style={styles.container}
-    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
-  >
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <Header />
-      <LoginForm />
-    </ScrollView>
-    <Footer />
-  </KeyboardAvoidingView>
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+    >
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <Header />
+        <LoginForm />
+      </ScrollView>
+      <Footer />
+    </KeyboardAvoidingView>
+  );
+}
+
+function HomeScreen() {
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+    >
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <HeaderLoged />
+        <Home />
+      </ScrollView>
+      <Footer />
+    </KeyboardAvoidingView>
+  );
+}
+
+function ProductsScreen() {
+  return (
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+    >
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <HeaderLoged />
+        <Products />
+      </ScrollView>
+      <Footer />
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 0, // Elimina el padding para evitar espacios extra
+    backgroundColor: '#121212',
   },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: "center",
-    padding: 16,
+    padding: 0, // Elimina el padding para evitar espacios extra
   },
 });
 

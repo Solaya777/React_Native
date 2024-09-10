@@ -19,7 +19,6 @@ export default function Signup() {
 
   const handleSignup = async () => {
     try {
-      // Usa el método correctamente desde el objeto auth
       await createUserWithEmailAndPassword(auth, email, password);
       Alert.alert('Registro exitoso', '¡Te has registrado correctamente!');
     } catch (error) {
@@ -32,28 +31,36 @@ export default function Signup() {
       <Image source={require('../assets/images/LOGO.png')} style={styles.logo} />
       <Text style={styles.title}>¡Regístrate!</Text>
 
+      <Text style={styles.label}>Nombre y apellido</Text>
       <TextInput
         style={styles.input}
-        placeholder="Ingrese su nombre y apellido"
         value={name}
         onChangeText={setName}
+        placeholder="Nombre completo"
+        placeholderTextColor="#777"  // Color gris claro para el placeholder
       />
+
+      <Text style={styles.label}>Correo electrónico</Text>
       <TextInput
         style={styles.input}
-        placeholder="Ingrese su correo electrónico"
         keyboardType="email-address"
         value={email}
         onChangeText={setEmail}
+        placeholder="ejemplo@correo.com"
+        placeholderTextColor="#777"  // Color gris claro para el placeholder
       />
+
+      <Text style={styles.label}>Contraseña</Text>
       <View style={styles.passwordContainer}>
         <TextInput
-          style={styles.input}
-          placeholder="Ingrese su contraseña"
+          style={[styles.input, styles.passwordInput]}
           secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
+          placeholder="Contraseña"
+          placeholderTextColor="#777"  // Color gris claro para el placeholder
         />
-        <TouchableOpacity onPress={togglePasswordVisibility}>
+        <TouchableOpacity onPress={togglePasswordVisibility} style={styles.toggleButton}>
           <Text style={styles.togglePassword}>{showPassword ? 'Ocultar' : 'Mostrar'}</Text>
         </TouchableOpacity>
       </View>
@@ -63,7 +70,7 @@ export default function Signup() {
       </TouchableOpacity>
 
       <View style={styles.registrationLink}>
-        <Text>¿Ya tienes una cuenta?</Text>
+        <Text style={styles.text}>¿Ya tienes una cuenta?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.linkText}>Inicia Sesión</Text>
         </TouchableOpacity>
@@ -76,7 +83,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#1c1c1c',
     justifyContent: 'center',
   },
   logo: {
@@ -90,24 +97,38 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
+    color: '#f0f0f0',
+  },
+  label: {
+    fontSize: 16,
+    color: '#f0f0f0',
+    marginBottom: 5,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#555',
     padding: 10,
     marginBottom: 15,
     borderRadius: 5,
+    color: '#fff',
   },
   passwordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  passwordInput: {
+    flex: 1,
+  },
+  toggleButton: {
+    paddingLeft: 10,
   },
   togglePassword: {
-    marginLeft: 10,
     fontSize: 18,
+    color: '#d32f2f',
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#d32f2f',
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
@@ -122,8 +143,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  text: {
+    color: '#f0f0f0',
+  },
   linkText: {
-    color: '#007BFF',
+    color: '#d32f2f',
     marginLeft: 5,
+    fontWeight: 'bold',
   },
 });

@@ -26,30 +26,39 @@ export default function LoginForm() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>¡Inicia sesión!</Text>
+
+      {/* Etiqueta para el campo de correo electrónico */}
+      <Text style={styles.label}>Correo electrónico</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Ingrese su correo electrónico"
+        style={styles.inputBox} // Cambiado a estilo con caja
         keyboardType="email-address"
         onChangeText={(text) => setEmail(text)}
         value={email}
+        placeholder="Ingresa tu correo electrónico"
+        placeholderTextColor="#777"
       />
+
+      {/* Etiqueta para el campo de contraseña */}
+      <Text style={styles.label}>Contraseña</Text>
       <View style={styles.passwordContainer}>
         <TextInput
-          style={styles.input}
-          placeholder="Ingrese su contraseña"
+          style={[styles.inputBox, { flex: 1 }]} // Cambiado a estilo con caja
           secureTextEntry={!passwordVisible}
           onChangeText={(text) => setPassword(text)}
           value={password}
+          placeholder="Ingresa tu contraseña"
+          placeholderTextColor="#777"
         />
         <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
           <Text style={styles.toggleText}>{passwordVisible ? 'Ocultar' : 'Mostrar'}</Text>
         </TouchableOpacity>
       </View>
+
       <TouchableOpacity style={styles.button} onPress={login}>
         <Text style={styles.buttonText}>Iniciar sesión</Text>
       </TouchableOpacity>
       <View style={styles.registrationLink}>
-        <Text>¿No tienes una cuenta? </Text>
+        <Text style={styles.text}>¿No tienes una cuenta? </Text>
         <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
           <Text style={styles.link}>¡Regístrate!</Text>
         </TouchableOpacity>
@@ -62,18 +71,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    padding: 15,
+    backgroundColor: '#1c1c1c', // Fondo oscuro
   },
   header: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
+    color: '#f0f0f0', // Texto gris claro
     marginBottom: 20,
+    textAlign: 'center',
   },
-  input: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+  label: {
+    color: '#f0f0f0', // Texto gris claro
+    marginBottom: 5,
+    fontSize: 16,
+  },
+  inputBox: {
+    borderWidth: 1, // Borde completo para la caja
+    borderColor: '#555', // Borde gris oscuro
     marginBottom: 20,
     padding: 10,
+    color: '#fff', // Texto blanco
+    borderRadius: 5, // Esquinas redondeadas
+    backgroundColor: '#2c2c2c', // Fondo gris oscuro
   },
   passwordContainer: {
     flexDirection: 'row',
@@ -82,24 +102,29 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     marginLeft: 10,
-    color: '#007BFF',
+    color: '#d32f2f', // Rojo oscuro para el texto de "Mostrar/Ocultar"
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#d32f2f', // Rojo oscuro para el botón
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
     marginBottom: 20,
   },
   buttonText: {
-    color: '#fff',
+    color: '#fff', // Texto blanco
     fontSize: 16,
+    fontWeight: 'bold',
   },
   registrationLink: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  text: {
+    color: '#f0f0f0', // Texto gris claro
+  },
   link: {
-    color: '#007BFF',
+    color: '#d32f2f', // Rojo oscuro para el enlace
+    fontWeight: 'bold',
   },
 });
