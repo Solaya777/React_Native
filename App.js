@@ -15,6 +15,8 @@ import { getAuth } from 'firebase/auth';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Text, Image, Linking, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import { LogBox } from 'react-native';
+import FooterLoged from "./components/FooterLoged";
+import ShoppingCart from './components/ShoppingCart';
 
 LogBox.ignoreLogs(['VirtualizedLists should never be nested inside plain ScrollViews']);
 
@@ -48,6 +50,11 @@ export default function App() {
             component={ProductsScreen}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="ShoppingCart"
+            component={ShoppingCart}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
@@ -68,7 +75,6 @@ function LoginScreen() {
         <Header />
         <LoginForm />
       </ScrollView>
-      <Footer />
     </KeyboardAvoidingView>
   );
 }
@@ -86,8 +92,9 @@ function HomeScreen() {
       >
         <HeaderLoged />
         <Home />
+        <Footer />
       </ScrollView>
-      <Footer />
+      <FooterLoged/>
     </KeyboardAvoidingView>
   );
 }
@@ -103,10 +110,11 @@ function ProductsScreen() {
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
       >
-        <HeaderLoged />
+        <HeaderLoged showCart={true}  />
         <Products />
+        <Footer />
       </ScrollView>
-      <Footer />
+      <FooterLoged/>
     </KeyboardAvoidingView>
   );
 }
@@ -114,13 +122,13 @@ function ProductsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 0, // Elimina el padding para evitar espacios extra
+    padding: 0, 
     backgroundColor: '#121212',
   },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: "center",
-    padding: 0, // Elimina el padding para evitar espacios extra
+    padding: 0, 
   },
 });
 

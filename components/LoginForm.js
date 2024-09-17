@@ -72,28 +72,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 15,
-    backgroundColor: '#1c1c1c', // Fondo oscuro
+    backgroundColor: '#1c1c1c',
+    paddingBottom: 125,
   },
   header: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#f0f0f0', // Texto gris claro
+    color: '#f0f0f0', 
     marginBottom: 20,
     textAlign: 'center',
   },
   label: {
-    color: '#f0f0f0', // Texto gris claro
+    color: '#f0f0f0', 
     marginBottom: 5,
     fontSize: 16,
   },
   inputBox: {
-    borderWidth: 1, // Borde completo para la caja
-    borderColor: '#555', // Borde gris oscuro
+    borderWidth: 1, 
+    borderColor: '#555', 
     marginBottom: 20,
     padding: 10,
-    color: '#fff', // Texto blanco
-    borderRadius: 5, // Esquinas redondeadas
-    backgroundColor: '#2c2c2c', // Fondo gris oscuro
+    color: '#fff', 
+    borderRadius: 5, 
+    backgroundColor: '#2c2c2c', 
   },
   passwordContainer: {
     flexDirection: 'row',
@@ -102,10 +103,10 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     marginLeft: 10,
-    color: '#d32f2f', // Rojo oscuro para el texto de "Mostrar/Ocultar"
+    color: '#d32f2f', 
   },
   button: {
-    backgroundColor: '#d32f2f', // Rojo oscuro para el botón
+    backgroundColor: '#d32f2f', 
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',
@@ -124,7 +125,7 @@ const styles = StyleSheet.create({
     color: '#f0f0f0', // Texto gris claro
   },
   link: {
-    color: '#d32f2f', // Rojo oscuro para el enlace
+    color: '#d32f2f', 
     fontWeight: 'bold',
   },
 });

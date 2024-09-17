@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#444',  // Borde gris oscuro
     alignItems: 'center',
+    paddingTop: 15,
+    paddingBottom: 110
   },
   logo: {
     width: 80,
@@ -42,9 +44,9 @@ const styles = StyleSheet.create({
   aboutText: {
     fontSize: 12,
     textAlign: 'center',
-    color: '#f0f0f0',  // Texto en color gris claro
+    color: '#f0f0f0',  
     marginBottom: 10,
-    fontStyle: 'italic',  // Añade estilo cursivo para darle un toque artístico
+    fontStyle: 'italic',  
   },
   socialLinks: {
     flexDirection: 'row',
@@ -53,18 +55,18 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   socialLink: {
-    color: '#d32f2f',  // Rojo oscuro, más acorde a una temática de metal
+    color: '#d32f2f',  
     fontSize: 14,
-    textTransform: 'uppercase',  // Texto en mayúsculas
-    fontWeight: 'bold',  // Negrita para mayor énfasis
+    textTransform: 'uppercase',  
+    fontWeight: 'bold', 
   },
   copyRight: {
     fontSize: 11,
-    color: '#888',  // Gris más claro para diferenciar del resto
+    color: '#888',  
     textAlign: 'center',
   },
   boldText: {
     fontWeight: 'bold',
-    color: '#f0f0f0',  // Texto destacado en gris claro
+    color: '#f0f0f0',  
   },
 });

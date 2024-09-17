@@ -164,8 +164,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1a1a1a', // Fondo oscuro
-    paddingHorizontal: 0, // Eliminar padding horizontal para evitar recuadros
-    paddingVertical: 0, // Eliminar padding vertical para evitar recuadros
+    paddingHorizontal: 0, 
+    paddingVertical: 0, 
+    marginBottom: 0,
   },
   searchInput: {
     backgroundColor: '#333',

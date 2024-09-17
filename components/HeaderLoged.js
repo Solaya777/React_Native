@@ -6,13 +6,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const auth = getAuth();
 
-export const HeaderLoged = () => {
+export const HeaderLoged = ({ showCart = false }) => {
   const navigation = useNavigation();
 
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      // Redirige a la pantalla de inicio de sesión después de cerrar sesión
       navigation.navigate('Login');
     } catch (error) {
       console.error('Error al cerrar sesión: ', error.message);
@@ -21,29 +20,27 @@ export const HeaderLoged = () => {
 
   return (
     <View style={styles.headerContainer}>
-      {/* Logo o apartado de Inicio que lleva a 'Home' */}
-      <TouchableOpacity
-        style={styles.logoContainer}
-        onPress={() => navigation.navigate('Home')}
-      >
-        <Text style={styles.linkText}>Inicio</Text>
-      </TouchableOpacity>
+      {/* Icono de Usuario y Mensaje de Bienvenida a la izquierda */}
+      <View style={styles.userInfoContainer}>
+        <Icon name="person" size={24} color="#fff" />
+        <Text style={styles.welcomeText}>Bienvenido!</Text>
+      </View>
 
-      {/* Botón de productos */}
-      <TouchableOpacity
-        style={styles.productsButton}
-        onPress={() => navigation.navigate('Products')} // Cambia 'Products' por la pantalla correspondiente
-      >
-        <Text style={styles.linkText}>Productos</Text>
-      </TouchableOpacity>
-
-      {/* Botón de cierre de sesión */}
-      <TouchableOpacity
-        style={styles.signOutButton}
-        onPress={handleSignOut}
-      >
-        <Icon name="logout" size={24} color="#fff" />
-      </TouchableOpacity>
+      {showCart ? (
+        <TouchableOpacity
+          style={styles.cartButton}
+          onPress={() => navigation.navigate('ShoppingCart')}
+        >
+          <Icon name="shopping-cart" size={24} color="#fff" />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={styles.signOutButton}
+          onPress={handleSignOut}
+        >
+          <Icon name="logout" size={24} color="#fff" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -53,26 +50,28 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#121212', // Fondo oscuro
-    padding: 30,
-    margin: -20,
-    marginBottom: -20,
+    backgroundColor: '#121212',  
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    width: '100%',
   },
-  logoContainer: {
-    flex: 1,
+  userInfoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  linkText: {
-    fontSize: 16,
-    color: '#f0f0f0', // Texto gris claro
-    marginHorizontal: 10,
-  },
-  productsButton: {
-    backgroundColor: '#1c1c1c', // Fondo del botón
-    padding: 10,
-    borderRadius: 5,
+  welcomeText: {
+    fontSize: 18,
+    color: '#f0f0f0',  // Texto gris claro
+    fontWeight: 'bold',
+    marginLeft: 5,  // Espacio entre el icono y el texto
   },
   signOutButton: {
-    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cartButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 

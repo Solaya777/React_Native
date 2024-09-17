@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingTop: 10,
     marginTop: 20,
+    marginBottom: 0
   },
   albumsTitle: {
     marginBottom: 20,
@@ -79,8 +80,8 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: '#A52A2A', // Borde blanco
-    backgroundColor: 'rgba(255, 255, 255, 0.1)', // Fondo semitransparente
+    borderColor: '#A52A2A', 
+    backgroundColor: 'rgba(255, 255, 255, 0.1)', 
     padding: 10,
   },
 });
